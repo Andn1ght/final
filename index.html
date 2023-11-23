@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>purity</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="shortcut icon" href="images/purity.ico" type="image/x-icon">
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <!-- Popup Form Section -->
+    <section class="popupform">
+        <button class="open-button" onclick="openForm()">
+            <img src="images/comment-regular.svg" alt="">
+        </button>
+        <div class="chat-popup" id="myForm">
+            <form class="form-container" action="#">
+                <h1 style="color:black">Chat</h1>
+                <label for="msg">Enter your message below!</label>
+                <textarea placeholder="Type your message..." name="msg" required></textarea>
+                <button type="submit" class="btn">Send</button>
+                <button type="button" class="btn cancel" onclick="closeForm()">Cancel/Close</button>
+            </form>
+        </div>
+        <script>
+            function openForm() {
+                document.getElementById("myForm").style.display = "block";
+            }
+
+            function closeForm() {
+                document.getElementById("myForm").style.display = "none";
+            }
+        </script>
+    </section>
+
+    <!-- Header Section -->
+    <header>
+        <!-- Navbar Section -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light position-fixed top-0 start-0 w-100">
+            <div class="container">
+                <!-- Brand for small screens -->
+                <a class="navbar-brand d-lg-none" href="index.html">P U R I T Y</a>
+
+                <!-- Navbar toggler for small screens -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Navbar content -->
+                <div class="collapse navbar-collapse p-2 flex-column" id="navbarContent">
+                    <!-- Search form -->
+                    <div class="d-flex justify-content-center justify-content-lg-between flex-column flex-lg-row w-100">
+                        <form class="d-flex">
+                            <input class="form-control me-2" type="search" placeholder="Search" />
+                            <button class="btn btn-outline-dark" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+
+                        <!-- Brand for large screens -->
+                        <a class="navbar-brand d-none d-lg-block" href="index.html">P U R I T Y</a>
+
+                        <!-- User and Bag links -->
+                        <ul class="navbar-nav">
+                            <!-- User dropdown -->
+                            <li class="nav-item dropdown d-flex align-items-center center_text">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-user"></i> My Account
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                                    <!-- Sign In button -->
+                                    <li>
+                                        <button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#SignInModal" id="signInBtn">
+                                            Sign In
+                                        </button>
+                                    </li>
+
+                                    <!-- Sign Up button -->
+                                    <li>
+                                        <button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#SignUpModal" id="signUpBtn">
+                                            Sign Up
+                                        </button>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <!-- Bag link -->
+                            <li class="nav-item d-flex align-items-center center_text">
+                                <a class="nav-link mx-2" href="Bag.html">
+                                    <i class="fas fa-shopping-bag"></i> Bag
+                                </a>
+                                <span class="badge rounded-pill bg-secondary">1</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Main navigation links -->
+                    <div class="d-block w-100">
+                        <ul class="navbar-nav d-flex justify-content-center align-items-center pt-3">
+                            <li class="nav-tem mx-2">
+                                <a class="nav-link" href="clothing.html">Clothing</a>
+                            </li>
+                            <li class="nav-tem mx-2">
+                                <a class="nav-link" href="About.html">About</a>
+                            </li>
+                            <li class="nav-tem mx-2">
+                                <a class="nav-link" href="Blog.html">Blog</a>
+                            </li>
+                            <li class="nav-tem mx-2">
+                                <a class="nav-link" href="to-do.html">To-Do list</a>
+                            </li>
+                            <li class="nav-tem mx-2">
+                                <a class="nav-link" href="contact_us.html">Contact Us</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Sign In Modal -->
+        <div class="modal fade" id="SignInModal" tabindex="-1" aria-labelledby="SignInModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="SignInModalLabel">Sign In</h5>
+                        <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Sign In form -->
+                        <form id="signInForm">
+                            <div class="row mb-3">
+                                <label for="InputEmail" class="col-sm-2 col-form-label">E-mail</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" id="InputEmail" required>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="InputPass" class="col-sm-2 col-form-label">Password</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" id="InputPass" required>
+                                </div>
+                            </div>
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" id="showPassword">
+                                <label class="form-check-label" for="showPassword">Show Password</label>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Sign In</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sign Up Modal -->
+        <div class="modal fade" id="SignUpModal" tabindex="-1" aria-labelledby="SignUpModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="SignUpModalLabel">Sign Up</h5>
+                        <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Sign Up form -->
+                        <form id="signUpForm">
+                            <div class="row mb-3">
+                                <label for="SignUpName" class="col-sm-2 col-form-label">Name</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="SignUpName" required>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="SignUpSurname" class="col-sm-2 col-form-label">Surname</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="SignUpSurname" required>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="SignUpEmail" class="col-sm-2 col-form-label">E-mail</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" id="SignUpEmail" required>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="SignUpPass" class="col-sm-2 col-form-label">Password</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" id="SignUpPass" required>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="SignUpConfirmPass" class="col-sm-2 col-form-label">Confirm Password</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" id="SignUpConfirmPass" required>
+                                </div>
+                            </div>
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" id="showSignUpPassword">
+                                <label class="form-check-label" for="showSignUpPassword">Show Password</label>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Sign Up</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Main Content Section -->
+    <main class="flex-grow-1">
+        <!-- Scroll To Top Button -->
+        <div id="scrollToTop" class="scroll_to_top">
+            <img src="./images/up-arrow-svgrepo-com.svg" alt="">
+        </div>
+
+        <!-- Carousel Section -->
+        <section>
+            <header class="position-relative text-center text-white mb-5">
+                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                            class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="images/Blackpink_Lisa_Celine_Photoshoot_2.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/Blackpink_Lisa_Celine_Photoshoot_1.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/Blackpink_Lisa_Celine_Photoshoot_3.jpg" class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+                <div class="position-absolute top-50 start-50 translate-middle-x w-100 px-3">
+                    <h1 class="display-4">Autumn Collection 2023</h1>
+                    <a href="#new" class="btn btn-light">
+                        Explore New Arrivals
+                    </a>
+                </div>
+            </header>
+        </section>
+
+        <!-- Countdown Section -->
+        <h2 class="display-6 py-5 autumn-sales text-center">Autumn Sales UP TO 50%</h2>
+        <div id="countdown" class="text-center mt-4">
+            <p>Time left for the sale: <span id="timer"></span></p>
+        </div>
+
+        <!-- Featured Products Section -->
+        <div class="container-fluid">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 my-5" id="new">
+                <!-- Card 1 -->
+                <div class="col mb-4">
+                    <div class="card h-100">
+                        <a href="./clothing.html">
+                            <img src="images/clothes1.webp" class="card-img-top" alt="Product">
+                        </a>
+                        <div class="card-body">
+                            <p class="card-text fw-bold">Balenciaga logo-print hoodie</p>
+                            <small class="text-secondary">USD 799$</small>
+                            <br>
+                            <small class="text-success">USD 399$ (50% off)</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="col mb-4">
+                    <div class="card h-100">
+                        <a href="./clothing.html">
+                            <img src="images/clothes2.jpeg" class="card-img-top" alt="Product">
+                        </a>
+                        <div class="card-body">
+                            <p class="card-text fw-bold">Lanvin SNEAKERS</p>
+                            <small class="text-secondary">USD 1,295$</small>
+                            <br>
+                            <small class="text-success">777USD $ (40% off)</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="col mb-4">
+                    <div class="card h-100">
+                        <a href="./clothing.html">
+                            <img src="images/clothes3.jpeg" class="card-img-top" alt="Product">
+                        </a>
+                        <div class="card-body">
+                            <p class="card-text fw-bold">AMIRI baseball cap</p>
+                            <small class="text-secondary">USD 315$</small>
+                            <br>
+                            <small class="text-success">252USD $ (20% off)</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="col mb-4">
+                    <div class="card h-100">
+                        <a href="./clothing.html">
+                            <img src="images/clothes4.webp" class="card-img-top" alt="Product">
+                        </a>
+                        <div class="card-body">
+                            <p class="card-text fw-bold">Vivienne Westwood bag</p>
+                            <small class="text-secondary">USD 691$</small>
+                            <br>
+                            <small class="text-success">483USD $ (30% off)</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- View All Products Button -->
+        <div class="text-center my-5">
+            <a href="clothing.html" class="btn btn-outline-light my-5">
+                View All Products
+            </a>
+        </div>
+
+        <!-- Gallery Section -->
+        <section class="container-fluid">
+            <div class="d-flex justify-content-between align-items-center flex-column flex-lg-row my-5 suits_gallery">
+                <div class="container-fluid p-0 my-5">
+                    <div class="row row-cols-1 row-cols-md-3 g-4 suits_gallery">
+                        <div class="col">
+                            <div class="position-relative h-100">
+                                <img src="images/suits.webp" class="img-fluid rounded h-100" alt="Suits">
+                                <a href="#" class="btn btn-dark position-absolute start-0 bottom-0 ms-2 mb-2 d-block">
+                                    Suits
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="position-relative h-100">
+                                <img src="images/coats.webp" class="img-fluid rounded h-100" alt="Coats">
+                                <a href="#" class="btn btn-dark position-absolute start-0 bottom-0 ms-2 mb-2 d-block">
+                                    Coats
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="position-relative h-100">
+                                <img src="images/bags.webp" class="img-fluid rounded h-100" alt="Bags">
+                                <a href="#" class="btn btn-dark position-absolute start-0 bottom-0 ms-2 mb-2 d-block">
+                                    Bags
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Images with Text Section (Celine and Vivienne) -->
+        <section class="container-fluid">
+            <div class="row text-start align-items-center gy-5 my-5">
+                <div class="col-12 col-md-6">
+                    <img src="images/aboutimg1.jpeg" class="h-100 w-100 rounded">
+                </div>
+                <div class="col-12 col-md-6">
+                    <div id="celine-section">
+                        <h2 class="display-4">
+                            CELINE
+                        </h2>
+                        <p>
+                            Celine (formerly spelled Céline, and stylized in all caps) is a French luxury ready-to-wear and leather goods brand owned by the LVMH group since 1996. It was founded in 1945 by Céline Vipiana. Since November 2015, the headquarters are located at 16 rue Vivienne in the 2nd arrondissement of Paris at the Hôtel Colbert de Torcy, which has French Historic Monument classification. Séverine Merle has been the Chief Executive Officer since April 2017.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row text-start align-items-center gy-5 my-5">
+                <div class="col-12 col-md-6">
+                    <div id="vivienne-section">
+                        <h2 class="display-4">
+                            Vivienne Westwood
+                        </h2>
+                        <p>
+                            Dame Vivienne Isabel Westwood DBE RDI (née Swire; 8 April 1941 – 29 December 2022) was an English fashion designer and businesswoman, largely responsible for bringing modern punk and new wave fashions into the mainstream. In 2022, Sky Arts ranked her the 4th most influential artist in Britain of the last 50 years.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <img src="images/brand2.jpeg" class="w-100 h-100">
+                </div>
+            </div>
+        </section>
+
+        <!-- Subscribe to Our Newsletter Section -->
+        <section class="my-5 mx-auto py-5" style="max-width: 30em;">
+            <h2>
+                Subscribe to our newsletter
+            </h2>
+            <form class="d-flex my-4" id="newsletter-form">
+                <input class="form-control me-2" type="email" id="email-input" placeholder="Your E-mail">
+                <button class="btn btn-outline-light" type="submit" id="subscribe-btn">
+                    Subscribe
+                </button>
+            </form>
+            <div id="feedback-message" class="text-danger"></div>
+        </section>
+    </main>
+
+
+    <!-- Footer Section -->
+    <footer class="footer container-fluid d-flex justify-content-between my-5 text-start flex-wrap">
+        <!-- Footer navigation links -->
+        <ul class="nav flex-column">
+            <li class="fw-bold nav-item">
+                <a href="index.html" class="nav-link text-light">
+                    Product
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="clothing.html" class="nav-link text-secondary">
+                    Clothing
+                </a>
+            </li>
+        </ul>
+        <ul class="nav flex-column">
+            <li class="fw-bold nav-item text-light">
+                <a href="contact_us.html" class="nav-link text-light">
+                    Help
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="clothing.html" class="nav-link text-secondary">
+                    Shopping Guide
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link text-secondary">
+                    Product Care
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="contact_us.html" class="nav-link text-secondary">
+                    Contact Us
+                </a>
+            </li>   
+        </ul>
+        <ul class="nav flex-column">
+            <li class="fw-bold nav-item text-dark">
+                <a href="index.html" class="nav-link text-light">
+                    Content
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="About.html" class="nav-link text-secondary">
+                    About
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="Blog.html" class="nav-link text-secondary">
+                    Blog
+                </a>
+            </li>
+        </ul>
+    </footer>
+
+    <!-- Bootstrap and custom scripts -->
+    <script>
+        const saleEndTime = new Date('2023-11-30T00:00:00').getTime();
+
+        // Update the countdown every second
+        const timerInterval = setInterval(updateCountdown, 1000);
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = saleEndTime - now;
+
+            if (distance <= 0) {
+                clearInterval(timerInterval);
+                document.getElementById("timer").innerHTML = "Sale Ended!";
+            } else {
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("timer").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            }
+        }
+    </script>
+
+    <script>
+        const celineSection = document.getElementById("celine-section");
+        const vivienneSection = document.getElementById("vivienne-section");
+        let animated = false;
+    
+        // Function to check if an element is in the viewport
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+    
+        // Function to handle the animation
+        function handleAnimation() {
+            if (!animated && isElementInViewport(celineSection)) {
+                celineSection.style.opacity = 1;
+                celineSection.style.transform = "translateX(0)";
+                vivienneSection.style.opacity = 1;
+                vivienneSection.style.transform = "translateX(0)";
+                animated = true;
+            }
+        }
+    
+        // Add a scroll event listener to trigger the animation
+        window.addEventListener("scroll", handleAnimation);
+    
+        // Initially check for the animation when the page loads
+        handleAnimation();
+    </script>
+
+    <!-- SUBSCRIBE TO OUR NEWSLETTER -->
+    <script>
+        const form = document.getElementById("newsletter-form");
+        const emailInput = document.getElementById("email-input");
+        const subscribeButton = document.getElementById("subscribe-btn");
+        const feedbackMessage = document.getElementById("feedback-message");
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const email = emailInput.value.trim();
+
+            if (!email) {
+                feedbackMessage.textContent = "Please enter your email.";
+                return;
+            }
+
+            // You can add more advanced email validation here
+            if (!isValidEmail(email)) {
+                feedbackMessage.textContent = "Please enter a valid email address.";
+                return;
+            }
+
+            // If the email is valid, you can proceed to submit the form or perform other actions.
+            // For this example, we'll display a success message.
+            feedbackMessage.textContent = "Thank you for subscribing!";
+            emailInput.value = "";
+            subscribeButton.disabled = true;
+        });
+
+        // Function to validate email using a simple regular expression
+        function isValidEmail(email) {
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailPattern.test(email);
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="assets/js/scroll_to_top.js"></script>
+    <script src="assets/js/modal.js"></script>
+</body>
+</html>
